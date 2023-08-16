@@ -1,8 +1,5 @@
-import _ from 'lodash';
 import './style.css';
-import Data from './data.xml';
-import Notes from './data.csv';
-import { tasks } from './module/taskData.mjs';
+import tasks from './module/taskData.js';
 
 // fnuction to iterat over the tasks array
 
@@ -13,7 +10,7 @@ function renderTasks() {
 
   tasks.sort((a, b) => a.index - b.index);
 
-  tasks.forEach(task => {
+  tasks.forEach((task) => {
     const taskItem = document.createElement('div');
     taskItem.classList.add('task');
     if (task.completed) {

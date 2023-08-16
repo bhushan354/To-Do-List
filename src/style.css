@@ -5,7 +5,8 @@
 }
 
 .mainContainer {
-  padding: 4px;
+  margin: 32px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .heading {
