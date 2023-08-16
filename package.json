@@ -4,6 +4,7 @@
   "description": "This is a simple To-Do-List website built using ES6 and Webpack . it organizes your daily tasks and adds new tasks also drag and drops to rearrange them .",
   "private": true,
   "scripts": {
+    "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack serve --open",
