@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1c14bb4d51.js" crossorigin="anonymous"></script>
     <title>To-Do-List</title>
 </head>
+
 <body>
-
-    <!-- 1 - main div jo sagda continer
-
-         1- title 
-         2- add to your list text field
-         3- dynamially adding tasks
-         4- clear all completed 
-        
-    1 - main div jo sagda continer      -->
 
     <div class="mainContainer">
 
         <!-- headings -->
         <div class="heading">
             <h1>Today's To Do</h1>
+            <i id="title-icon" class="fa-solid fa-arrows-rotate"></i>
         </div>
 
         <!-- input tasks -->
         <div class="inputTasks">
-             
+            <input type="text" id="typeTasks" placeholder="Add to your list..."/>
+            <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
+
+        <!-- task added using javascript -->
+        <div class="addedTasks">
+
+        </div>
+
+        <!-- clear all completed -->
+        <div class="lastButton">
+            <button class="clearAll" type="button">Clear All Completed</button>
         </div>
 
     </div>
-  
+
 </body>
+
 </html>

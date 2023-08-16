@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 1px solid red;
+}
+
+.mainContainer {
+  padding: 4px;
+}
+
+.heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputTasks {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#typeTasks {
+  display: flex;
+  width: 80%;
+  height: 36px;
+  padding: 2px;
+}
