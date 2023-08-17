@@ -2,8 +2,6 @@ import './style.css';
 import tasks from './module/taskData.js';
 import { addNewTask } from './module/functionsTasks.js';
 
-
-
 // fnuction to iterat over the tasks array
 
 const addedTasksContainer = document.querySelector('.addedTasks');

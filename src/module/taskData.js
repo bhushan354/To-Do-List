@@ -1,5 +1,3 @@
-const tasks = [
-  { description: 'complete To Do List Project', completed: false, index: 2 },
-];
+const tasks = [];
 
 export default tasks;
