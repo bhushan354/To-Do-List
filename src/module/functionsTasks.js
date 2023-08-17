@@ -1,3 +1,3 @@
-import { addNewTask, removeTask, editTask } from './taskFunctions.js';
+import { addNewTask, removeTask, editTask } from './allFunctions.js';
 
 export { addNewTask, removeTask, editTask };

@@ -32,9 +32,13 @@
   padding: 4px;
 }
 
+input.edit-input {
+  width: 95%;
+  height: 28px;
+}
+
 .addedTasks {
   border-top: 1px solid #ccc;
-  padding-top: 10px;
 }
 
 .task {
