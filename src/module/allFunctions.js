@@ -7,17 +7,17 @@ export function saveInLocalstorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+export function changeIndexes(tasks) {
+  tasks.forEach((task, index) => {
+    task.index = index + 1;
+  });
+}
+
 export function addNewTask(description) {
   const newTask = { description, completed: false, index: tasks.length + 1 };
   tasks.push(newTask);
   changeIndexes(tasks);
   saveInLocalstorage();
-}
-
-export function changeIndexes(tasks) {
-  tasks.forEach((task, index) => {
-    task.index = index + 1;
-  });
 }
 
 export function removeTask(index) {

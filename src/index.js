@@ -1,7 +1,7 @@
 import './style.css';
 import tasks from './module/taskData.js';
 import { addNewTask, removeTask, editTask } from './module/allFunctions.js';
-import { setupClearAllButton } from './module/clearAll.js';
+import setupClearAllButton from './module/clearAll.js';
 
 const addedTasksContainer = document.querySelector('.addedTasks');
 const typeTasksInput = document.getElementById('typeTasks');
@@ -63,9 +63,7 @@ function renderTasks() {
       renderTasks();
     });
   });
-
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -78,7 +76,6 @@ typeTasksInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     addNewTask(typeTasksInput.value);
     typeTasksInput.value = '';
-
 
     renderTasks();
   }
