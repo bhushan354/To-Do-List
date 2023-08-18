@@ -1,5 +1,6 @@
 import './style.css';
 import tasks from './module/taskData.js';
+//status updates import
 import { addNewTask, removeTask, editTask } from './module/allFunctions.js';
 
 const addedTasksContainer = document.querySelector('.addedTasks');
