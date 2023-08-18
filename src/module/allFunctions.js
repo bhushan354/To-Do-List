@@ -1,5 +1,3 @@
-// function to add task to tasks object
-
 import tasks from './taskData.js';
 
 // localsstrorage saving function
