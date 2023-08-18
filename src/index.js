@@ -1,7 +1,7 @@
 import './style.css';
 import tasks from './module/taskData.js';
-//status updates import
 import { addNewTask, removeTask, editTask } from './module/allFunctions.js';
+import { setupClearAllButton } from './module/clearAll.js';
 
 const addedTasksContainer = document.querySelector('.addedTasks');
 const typeTasksInput = document.getElementById('typeTasks');
@@ -23,13 +23,13 @@ function renderTasks() {
       <p>${task.description}</p>
       <i class="fa-solid fa-ellipsis-vertical"></i>
       <i class="fa-regular fa-square-minus" style="display:none"></i>
-      
     `;
 
     addedTasksContainer.appendChild(taskItem);
 
     const deleteTaskbtn = taskItem.querySelector('.fa-square-minus');
     const optionbtn = taskItem.querySelector('.fa-ellipsis-vertical');
+    const checkbox = taskItem.querySelector('input[type="checkbox"]');
 
     optionbtn.addEventListener('click', () => {
       deleteTaskbtn.style.display = '';
@@ -56,8 +56,17 @@ function renderTasks() {
       removeTask(index + 1);
       renderTasks();
     });
+
+    checkbox.addEventListener('change', () => {
+      const newCompleted = checkbox.checked;
+      editTask(index + 1, task.description, newCompleted);
+      renderTasks();
+    });
   });
+
 }
+
+export { renderTasks };
 
 document.addEventListener('DOMContentLoaded', () => {
   const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -73,3 +82,5 @@ typeTasksInput.addEventListener('keydown', (event) => {
     renderTasks();
   }
 });
+
+setupClearAllButton(tasks, renderTasks);

@@ -3,7 +3,7 @@
 import tasks from './taskData.js';
 
 // localsstrorage saving function
-function saveInLocalstorage() {
+export function saveInLocalstorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -13,7 +13,7 @@ export function addNewTask(description) {
   saveInLocalstorage();
 }
 
-function changeIndexes() {
+export function changeIndexes() {
   tasks.forEach((task, index) => {
     task.index = index + 1;
   });
@@ -27,7 +27,8 @@ export function removeTask(index) {
   saveInLocalstorage();
 }
 
-export function editTask(index, newDescription) {
+export function editTask(index, newDescription, newCompleted) {
   tasks[index - 1].description = newDescription;
+  tasks[index - 1].completed = newCompleted;
   saveInLocalstorage();
 }
