@@ -1,6 +1,7 @@
 import './style.css';
 import tasks from './module/taskData.js';
 import { addNewTask, removeTask, editTask } from './module/allFunctions.js';
+import setupClearAllButton from './module/clearAll.js';
 
 const addedTasksContainer = document.querySelector('.addedTasks');
 const typeTasksInput = document.getElementById('typeTasks');
@@ -10,7 +11,7 @@ function renderTasks() {
 
   tasks.sort((a, b) => a.index - b.index);
 
-  tasks.forEach((task, index) => {
+  tasks.forEach((task, taskIndex) => {
     const taskItem = document.createElement('div');
     taskItem.classList.add('task');
     if (task.completed) {
@@ -22,13 +23,13 @@ function renderTasks() {
       <p>${task.description}</p>
       <i class="fa-solid fa-ellipsis-vertical"></i>
       <i class="fa-regular fa-square-minus" style="display:none"></i>
-      
     `;
 
     addedTasksContainer.appendChild(taskItem);
 
     const deleteTaskbtn = taskItem.querySelector('.fa-square-minus');
     const optionbtn = taskItem.querySelector('.fa-ellipsis-vertical');
+    const checkbox = taskItem.querySelector('input[type="checkbox"]');
 
     optionbtn.addEventListener('click', () => {
       deleteTaskbtn.style.display = '';
@@ -44,7 +45,7 @@ function renderTasks() {
 
       editInput.addEventListener('input', () => {
         const newDescription = editInput.value;
-        editTask(index + 1, newDescription);
+        editTask(taskIndex + 1, newDescription);
       });
 
       taskDescription.innerHTML = '';
@@ -52,7 +53,13 @@ function renderTasks() {
     });
 
     deleteTaskbtn.addEventListener('click', () => {
-      removeTask(index + 1);
+      removeTask(taskIndex + 1);
+      renderTasks();
+    });
+
+    checkbox.addEventListener('change', () => {
+      const newCompleted = checkbox.checked;
+      editTask(taskIndex + 1, task.description, newCompleted);
       renderTasks();
     });
   });
@@ -69,6 +76,12 @@ typeTasksInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     addNewTask(typeTasksInput.value);
     typeTasksInput.value = '';
+
     renderTasks();
   }
+});
+
+const clearAllButton = document.querySelector('.clearAll');
+clearAllButton.addEventListener('click', () => {
+  setupClearAllButton(tasks, renderTasks, removeTask);
 });
