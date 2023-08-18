@@ -10,20 +10,19 @@ export function saveInLocalstorage() {
 export function addNewTask(description) {
   const newTask = { description, completed: false, index: tasks.length + 1 };
   tasks.push(newTask);
+  changeIndexes(tasks);
   saveInLocalstorage();
 }
 
-export function changeIndexes() {
+export function changeIndexes(tasks) {
   tasks.forEach((task, index) => {
     task.index = index + 1;
   });
 }
 
 export function removeTask(index) {
-  // splice(rememberThisArgumentIsTheNo.OfIndexWhichWillBeDeleted   ,
-  //  andThisParameterSpecifiesHowManyItemsWillBeDeleted)
   tasks.splice(index - 1, 1);
-  changeIndexes();
+  changeIndexes(tasks);
   saveInLocalstorage();
 }
 

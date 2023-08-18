@@ -1,20 +1,24 @@
 import { changeIndexes, saveInLocalstorage } from './allFunctions.js';
 
+export function setupClearAllButton(tasks, renderTasks, removeTask) {
+  console.log('Before filter:', tasks);
 
-export function setupClearAllButton(tasks, renderTasks) {
-  const clearAllButton = document.querySelector('.clearAll');
+  const completedTasks = tasks.filter(task => task.completed);
 
-  clearAllButton.addEventListener('click', () => {
-
-    console.log('Before filter:', tasks);
-
-    tasks = tasks.filter(task => !task.completed);
-
-    console.log('after filter:', tasks);
-
-    changeIndexes();
-    saveInLocalstorage();
-
-    renderTasks();
+  completedTasks.forEach(completedTask => {
+    removeTask(completedTask.index);
+    const taskItem = document.querySelector(`[data-task-id="${completedTask.index}"]`);
+    if (taskItem) {
+      taskItem.remove();
+    }
   });
+
+  changeIndexes(tasks);
+
+  saveInLocalstorage();
+  console.log('after filter:', tasks);
+
+  renderTasks();
+  
+  console.log('after filter:', tasks);
 }

@@ -11,7 +11,7 @@ function renderTasks() {
 
   tasks.sort((a, b) => a.index - b.index);
 
-  tasks.forEach((task, index) => {
+  tasks.forEach((task, taskIndex) => {
     const taskItem = document.createElement('div');
     taskItem.classList.add('task');
     if (task.completed) {
@@ -45,7 +45,7 @@ function renderTasks() {
 
       editInput.addEventListener('input', () => {
         const newDescription = editInput.value;
-        editTask(index + 1, newDescription);
+        editTask(taskIndex + 1, newDescription);
       });
 
       taskDescription.innerHTML = '';
@@ -53,20 +53,19 @@ function renderTasks() {
     });
 
     deleteTaskbtn.addEventListener('click', () => {
-      removeTask(index + 1);
+      removeTask(taskIndex + 1);
       renderTasks();
     });
 
     checkbox.addEventListener('change', () => {
       const newCompleted = checkbox.checked;
-      editTask(index + 1, task.description, newCompleted);
+      editTask(taskIndex + 1, task.description, newCompleted);
       renderTasks();
     });
   });
 
 }
 
-export { renderTasks };
 
 document.addEventListener('DOMContentLoaded', () => {
   const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -79,8 +78,13 @@ typeTasksInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     addNewTask(typeTasksInput.value);
     typeTasksInput.value = '';
+
+
     renderTasks();
   }
 });
 
-setupClearAllButton(tasks, renderTasks);
+const clearAllButton = document.querySelector('.clearAll');
+clearAllButton.addEventListener('click', () => {
+  setupClearAllButton(tasks, renderTasks, removeTask);
+});
