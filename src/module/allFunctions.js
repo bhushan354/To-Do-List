@@ -31,19 +31,7 @@ function editTask(index, newDescription, newCompleted) {
 
 module.exports = {
   addNewTask,
-  removeTask, { index: 3, completed: false };
-    const tasks = [completedTask1, completedTask2, incompleteTask];
-
-    const renderTasksMock = jest.fn();
-    const removeTaskMock = jest.fn();
-
-    const taskItemMock = { remove: jest.fn() };
-    document.querySelector = jest.fn().mockReturnValue(taskItemMock);
-
-    setupClearAllButton(tasks, renderTasksMock, removeTaskMock);
-
-    expect(removeTaskMock).toHaveBeenCalledTimes(2);
-    expect(removeTaskMoc
+  removeTask,
   editTask,
   changeIndexes,
   saveInLocalstorage,
