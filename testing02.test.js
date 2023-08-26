@@ -1,5 +1,5 @@
 const allFunctions = require('./src/module/allFunctions.js');
-const {setupClearAllButton} = require('./src/module/clearAll.js');
+const { setupClearAllButton } = require('./src/module/clearAll.js');
 
 const localStorageMock = {
   getItem: jest.fn(),
@@ -39,19 +39,17 @@ describe('tasks functions using describe method', () => {
     expect(liElements).toHaveLength(1);
   });
 
-  //new test edit 
+  // new test edit
   test('test for editTask function', () => {
     allFunctions.addNewTask('Task to Edit');
 
-    allFunctions.editTask(1, "Updated Description", true);
+    allFunctions.editTask(1, 'Updated Description', true);
 
     const taskListElement = document.querySelector('.addedTasks');
     const liElement = taskListElement.querySelector('li');
 
-
     expect(localStorageMock.setItem).toHaveBeenCalledTimes(0);
-    expect(liElement.textContent).toContain("");
- 
+    expect(liElement.textContent).toContain('');
   });
 
   // new test clear all button
@@ -79,5 +77,4 @@ describe('tasks functions using describe method', () => {
 
     expect(renderTasksMock).toHaveBeenCalled();
   });
-  
 });
