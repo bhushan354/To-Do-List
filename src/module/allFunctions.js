@@ -35,4 +35,8 @@ module.exports = {
   editTask,
   changeIndexes,
   saveInLocalstorage,
+
 };
+
+};
+
