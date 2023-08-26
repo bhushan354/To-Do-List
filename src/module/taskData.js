@@ -1,3 +1,3 @@
 const tasks = [];
 
-export default tasks;
+module.exports = tasks;
