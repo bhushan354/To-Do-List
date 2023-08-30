@@ -135,7 +135,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
   \************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+  
+eval("const tasks = __webpack_require__(/*! ./taskData.js */ \"./src/module/taskData.js\");\n\nfunction saveInLocalstorage() {\n  localStorage.setItem('tasks', JSON.stringify(tasks));\n}\n\nfunction changeIndexes(tasks) {\n  tasks.forEach((task, index) => {\n    task.index = index + 1;\n  });\n}\n\nfunction addNewTask(description) {\n  const newTask = { description, completed: false, index: tasks.length + 1 };\n  tasks.push(newTask);\n  changeIndexes(tasks);\n  saveInLocalstorage();\n}\n\nfunction removeTask(index) {\n  tasks.splice(index - 1, 1);\n  changeIndexes(tasks);\n  saveInLocalstorage();\n}\n\nfunction editTask(index, newDescription, newCompleted) {\n\n  console.log('Editing task', index, 'with', newDescription, newCompleted);\n\n\n  tasks[index - 1].description = newDescription;\n  tasks[index - 1].completed = newCompleted;\n  saveInLocalstorage();\n}\n\nmodule.exports = {\n  addNewTask,\n  removeTask,\n  editTask,\n  changeIndexes,\n  saveInLocalstorage,\n};\n\n\n//# sourceURL=webpack://To-Do-List/./src/module/allFunctions.js?");
+
 eval("const tasks = __webpack_require__(/*! ./taskData.js */ \"./src/module/taskData.js\");\n\nfunction saveInLocalstorage() {\n  localStorage.setItem('tasks', JSON.stringify(tasks));\n}\n\nfunction changeIndexes(tasks) {\n  tasks.forEach((task, index) => {\n    task.index = index + 1;\n  });\n}\n\nfunction addNewTask(description) {\n  const newTask = { description, completed: false, index: tasks.length + 1 };\n  tasks.push(newTask);\n  changeIndexes(tasks);\n  saveInLocalstorage();\n}\n\nfunction removeTask(index) {\n  tasks.splice(index - 1, 1);\n  changeIndexes(tasks);\n  saveInLocalstorage();\n}\n\nfunction editTask(index, newDescription, newCompleted) {\n  tasks[index - 1].description = newDescription;\n  tasks[index - 1].completed = newCompleted;\n  saveInLocalstorage();\n}\n\nmodule.exports = {\n  addNewTask,\n  removeTask,\n  editTask\n};\n\n\n//# sourceURL=webpack://To-Do-List/./src/module/allFunctions.js?");
+
 
 /***/ }),
 
@@ -156,7 +160,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************/
 /***/ ((module) => {
 
+
+eval("const tasks = [];\n\nmodule.exports = tasks;\n\n//# sourceURL=webpack://To-Do-List/./src/module/taskData.js?");
+
 eval("const tasks = [];\n\nmodule.exports = tasks;\n\n\n//# sourceURL=webpack://To-Do-List/./src/module/taskData.js?");
+
 
 /***/ })
 

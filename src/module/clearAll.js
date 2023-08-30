@@ -1,6 +1,6 @@
-import { changeIndexes, saveInLocalstorage } from './allFunctions.js';
+const { changeIndexes, saveInLocalstorage } = require('./allFunctions.js');
 
-export default function setupClearAllButton(tasks, renderTasks, removeTask) {
+function setupClearAllButton(tasks, renderTasks, removeTask) {
   const completedTasks = tasks.filter((task) => task.completed);
 
   completedTasks.forEach((completedTask) => {
@@ -17,3 +17,7 @@ export default function setupClearAllButton(tasks, renderTasks, removeTask) {
 
   renderTasks();
 }
+
+module.exports = {
+  setupClearAllButton,
+};
